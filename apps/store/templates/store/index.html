@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BankSuppliesStore.com</title>
+        {% load static %}
+     
+     <link rel="stylesheet" href="{% static 'store/css/index.css' %}" charset="utf-8"  />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>Bank Supplies Store</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- LOOPING THROUGH THE ITEM IN THE PRODUCTS.PY FILE -->
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>${{ item.price }}</td>
+                    <td>
+                        <!-- FORM -->
+                        <form action="/buy/{{ item.id }}" method="POST">
+                            {% csrf_token %}
+                            <select name='quantity'>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <button type="submit">Buy!</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
