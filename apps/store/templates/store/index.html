@@ -9,36 +9,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <h1>Bank Supplies Store</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- LOOPING THROUGH THE ITEM IN THE PRODUCTS.PY FILE -->
-                {% for item in items %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    <td>${{ item.price }}</td>
-                    <td>
-                        <!-- FORM -->
-                        <form action="/buy/{{ item.id }}" method="POST">
-                            {% csrf_token %}
-                            <select name='quantity'>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                            <button type="submit">Buy!</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="wrapper">
+            <h1>Bank Supplies Store</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- LOOPING THROUGH THE ITEM IN THE PRODUCTS.PY FILE -->
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>${{ item.price }}</td>
+                        <td>
+                            <!-- FORM -->
+                            <form action="/buy/{{ item.id }}" method="POST">
+                                {% csrf_token %}
+                                <select name='quantity'>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                                <button type="submit">Buy!</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="right">
+                <img src="static/store/pen.png" height="60" width="60"/ >
+                <br>
+                <img src="static/store/shirt.png" height="60" width="60"/ >
+                <br>
+                <img src="static/store/mug.png" height="60" width="60"/ >
+            </div>
+                
+            </div>
     </body>
 </html>
