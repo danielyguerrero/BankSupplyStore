@@ -9,6 +9,9 @@ h1{
 	background-color: white;
 	height: 350px;
 	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 10px;
 }
 .right{
 	height: 200px;
